@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Kalkulator Jejak Karbon</title>
+    <style></style>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <label for="KonsumsiDayaListrik"
+      >Input number of your Electric consumption:</label
+    >
+    <input
+      id="KonsumsiDayaListrik"
+      type="number"
+      name="DayaListrik"
+      placeholder="in kWh"
+    />
+
+    <label for="KonsumsiGasLPG">Input number of your LPG gas usage:</label>
+    <input id="KonsumsiGasLPG" type="number" name="GasLPG" />
+
+    <select id="type">
+      <option value="">Choose type of fuel</option>
+      <option value="Gasoline">Gasoline</option>
+      <option value="Kerosene">Kerosene</option>
+      <option value="Diesel">Diesel</option>
+    </select>
+
+    <div id="total-gasoline" style="display: none">
+      <label for="total-gasoline-input">Total gasoline used:</label>
+      <input
+        type="number"
+        id="total-gasoline-input"
+        onkeydown="if(event.keyCode === 13) hitungTotalFuel()"
+      />
+    </div>
+
+    <div id="total-kerosene" style="display: none">
+      <label for="total-kerosene-input">Total kerosene used:</label>
+      <input
+        type="number"
+        id="total-kerosene-input"
+        onkeydown="if(event.keyCode === 13) hitungTotalFuel()"
+      />
+    </div>
+
+    <div id="total-diesel" style="display: none">
+      <label for="total-diesel-input">Total diesel used:</label>
+      <input
+        type="number"
+        id="total-diesel-input"
+        onkeydown="if(event.keyCode === 13) hitungTotalFuel()"
+      />
+    </div>
+
+    <div id="total-fuel" style="display: none">
+      Total carbon from fuel: <span id="total-fuel-span">0</span> CO2
+    </div>
+
+    <div id="total-carbon-electric" style="display: none">
+      Total carbon from electric:
+      <span id="total-carbon-electric-span">0</span> CO2
+    </div>
+
+    <div id="total-carbon-lpg" style="display: none">
+      Total carbon from LPG: <span id="total-carbon-lpg-span">0</span> CO2
+    </div>
+
+    <div id="total-carbon" style="display: none">
+      Total carbon: <span id="total-carbon-span">0</span> CO2
+    </div>
+
+    <script>
+      const selectType = document.getElementById("type");
+      const totalGasolineUse = document.getElementById("total-gasoline");
+      const totalKeroseneUse = document.getElementById("total-kerosene");
+      const totalDieselUse = document.getElementById("total-diesel");
+      const totalFuelElement = document.getElementById("total-fuel");
+      const totalFuelSpanElement = document.getElementById("total-fuel-span");
+      const totalCarbonElectricElement = document.getElementById(
+        "total-carbon-electric"
+      );
+      const totalCarbonElectricSpanElement = document.getElementById(
+        "total-carbon-electric-span"
+      );
+      const totalCarbonLPGElement = document.getElementById("total-carbon-lpg");
+      const totalCarbonLPGSpanElement = document.getElementById(
+        "total-carbon-lpg-span"
+      );
+      const totalCarbonElement = document.getElementById("total-carbon");
+      const totalCarbonSpanElement =
+        document.getElementById("total-carbon-span");
+
+      function hitungTotalFuel() {
+        const selectedType = selectType.value;
+
+        let totalFuel = 0;
+
+        if (selectedType === "Gasoline") {
+          const totalGasoline = parseInt(
+            document.getElementById("total-gasoline-input").value
+          );
+          totalFuel = totalGasoline * 69300;
+        } else if (selectedType === "Kerosene") {
+          const totalKerosene = parseInt(
+            document.getElementById("total-kerosene-input").value
+          );
+          totalFuel = totalKerosene * 71900; // You need to define the conversion factor for kerosene
+        } else if (selectedType === "Diesel") {
+          const totalDiesel = parseInt(
+            document.getElementById("total-diesel-input").value
+          );
+          totalFuel = totalDiesel * 74100; // You need to define the conversion factor for diesel
+        }
+
+        totalFuelSpanElement.textContent = totalFuel;
+        totalFuelElement.style.display = "block";
+        calculateTotalCarbon();
+      }
+
+      function calculateTotalCarbon() {
+        const electricConsumption = parseInt(
+          document.getElementById("KonsumsiDayaListrik").value
+        );
+        const lpgConsumption = parseInt(
+          document.getElementById("KonsumsiGasLPG").value
+        );
+
+        const FEElectric = 0.794;
+        const FELPG = 63100;
+        const nCvLPG = 0.0000473;
+
+        const totalCarbonElectric = electricConsumption * FEElectric;
+        const totalCarbonLPG = FELPG * lpgConsumption * nCvLPG;
+
+        totalCarbonElectricSpanElement.textContent = totalCarbonElectric;
+        totalCarbonElectricElement.style.display = "block";
+
+        totalCarbonLPGSpanElement.textContent = totalCarbonLPG;
+        totalCarbonLPGElement.style.display = "block";
+
+        const totalCarbon =
+          totalCarbonElectric +
+          totalCarbonLPG +
+          parseInt(totalFuelSpanElement.textContent);
+        totalCarbonSpanElement.textContent = totalCarbon;
+        totalCarbonElement.style.display = "block";
+      }
+
+      selectType.addEventListener("change", () => {
+        const selectedType = selectType.value;
+
+        if (selectedType === "Gasoline") {
+          totalGasolineUse.style.display = "block";
+          totalKeroseneUse.style.display = "none";
+          totalDieselUse.style.display = "none";
+        } else if (selectedType === "Kerosene") {
+          totalKeroseneUse.style.display = "block";
+          totalGasolineUse.style.display = "none";
+          totalDieselUse.style.display = "none";
+        } else if (selectedType === "Diesel") {
+          totalDieselUse.style.display = "block";
+          totalGasolineUse.style.display = "none";
+          totalKeroseneUse.style.display = "none";
+        } else {
+          totalGasolineUse.style.display = "none";
+          totalKeroseneUse.style.display = "none";
+          totalDieselUse.style.display = "none";
+          totalFuelElement.style.display = "none";
+        }
+      });
+    </script>
+  </body>
+</html>
