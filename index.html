@@ -6,28 +6,50 @@
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body>
-    <h1 class="font-serif">Kalkulator Jejak Karbon</h1>
-    <label for="KonsumsiDayaListrik"
-      >Input number of your Electric consumption:</label
+    <h1 class="text-2xl text-center font-serif">Kalkulator Jejak Karbon</h1>
+    <p class="text-justify text-mono text-lg">
+      CO2 emission has been a special attention nowadays. Factory,
+      Transportation, Electricity use, and gas use, were the highest
+      contributors to CO2 emissions. Not just the macro scale the highest
+      contributor, but the micro scale is also. Activity like electricity, gas,
+      and transportation use are examples. So, it is important to calculate our
+      carbon footprint so we can help to control CO2 emissions in the world.
+      Kind of example a CO2 emission cause is global warming. Then global
+      warming causes this disaster:
+      <p1> 1. The polar ice is melting </p1>
+      <p2> 2. Sea level rises </p2>
+      <p3> 3. Earth's temperature rises </p3>
+      <p4> 4. Forest fires </p4>
+    </p>
+    <div class="text-center tracking-wide">
+      <label for="KonsumsiDayaListrik"
+        >Input number of your Electric consumption:</label
+      >
+      <input
+        id="KonsumsiDayaListrik"
+        type="number"
+        name="DayaListrik"
+        placeholder="in kWh"
+      />
+    </div>
+    <div class="text-center tracking-wide">
+      <label for="KonsumsiGasLPG">Input number of your LPG gas usage:</label>
+      <input id="KonsumsiGasLPG" type="number" name="GasLPG" />
+    </div>
+    <div class="text-center tracking-wide">
+      <select id="type">
+        <option value="">Choose type of fuel</option>
+        <option value="Gasoline">Gasoline</option>
+        <option value="Kerosene">Kerosene</option>
+        <option value="Diesel">Diesel</option>
+      </select>
+    </div>
+
+    <div
+      class="text-center tracking-wide"
+      id="total-gasoline"
+      style="display: none"
     >
-    <input
-      id="KonsumsiDayaListrik"
-      type="number"
-      name="DayaListrik"
-      placeholder="in kWh"
-    />
-
-    <label for="KonsumsiGasLPG">Input number of your LPG gas usage:</label>
-    <input id="KonsumsiGasLPG" type="number" name="GasLPG" />
-
-    <select id="type">
-      <option value="">Choose type of fuel</option>
-      <option value="Gasoline">Gasoline</option>
-      <option value="Kerosene">Kerosene</option>
-      <option value="Diesel">Diesel</option>
-    </select>
-
-    <div id="total-gasoline" style="display: none">
       <label for="total-gasoline-input">Total gasoline used:</label>
       <input
         type="number"
@@ -36,7 +58,11 @@
       />
     </div>
 
-    <div id="total-kerosene" style="display: none">
+    <div
+      class="text-center tracking-wide"
+      id="total-kerosene"
+      style="display: none"
+    >
       <label for="total-kerosene-input">Total kerosene used:</label>
       <input
         type="number"
@@ -45,7 +71,11 @@
       />
     </div>
 
-    <div id="total-diesel" style="display: none">
+    <div
+      class="text-center tracking-wide"
+      id="total-diesel"
+      style="display: none"
+    >
       <label for="total-diesel-input">Total diesel used:</label>
       <input
         type="number"
@@ -54,20 +84,36 @@
       />
     </div>
 
-    <div id="total-fuel" style="display: none">
+    <div
+      class="text-center tracking-wide"
+      id="total-fuel"
+      style="display: none"
+    >
       Total carbon from fuel: <span id="total-fuel-span">0</span> CO2
     </div>
 
-    <div id="total-carbon-electric" style="display: none">
+    <div
+      class="text-center tracking-wide"
+      id="total-carbon-electric"
+      style="display: none"
+    >
       Total carbon from electric:
       <span id="total-carbon-electric-span">0</span> CO2
     </div>
 
-    <div id="total-carbon-lpg" style="display: none">
+    <div
+      class="text-center tracking-wide"
+      id="total-carbon-lpg"
+      style="display: none"
+    >
       Total carbon from LPG: <span id="total-carbon-lpg-span">0</span> CO2
     </div>
 
-    <div id="total-carbon" style="display: none">
+    <div
+      class="text-center tracking-wide"
+      id="total-carbon"
+      style="display: none"
+    >
       Total carbon: <span id="total-carbon-span">0</span> CO2
     </div>
 
