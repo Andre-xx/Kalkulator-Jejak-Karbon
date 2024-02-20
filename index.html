@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Kalkulator Jejak Karbon</title>
-    <style></style>
-    <script src="https://cdn.tailwindcss.com"></script>
-  </head>
-  <body>
-    <h1 class="text-2xl text-center font-serif">Kalkulator Jejak Karbon</h1>
-    <p class="ml-10 mr-96 text-justify text-mono text-lg">
-      CO2 emission has been a special attention nowadays. Factory,
-      Transportation, Electricity use, and gas use, were the highest
+
+<head>
+  <title>Kalkulator Jejak Karbon</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-lime-600">
+  <div class="grid grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-3 desktop:grid-cols-4">
+    <img src="https://www.dnv.com/Images/Carbon-footprint-1134x300_tcm8-13701.jpg" alt="Carbon Footprint Image"
+      class="w-full h-48 object-cover" />
+    <h1 class="text-slate-900 ml-28 text-2xl text-left font-serif">Kalkulator Jejak Karbon</h1>
+    <div class="ml-20 mr-20 text-justify z-10 text-slate-800">
       contributors to CO2 emissions. Not just the macro scale the highest
       contributor, but the micro scale is also. Activity like electricity, gas,
       and transportation use are examples. So, it is important to calculate our
@@ -20,202 +22,175 @@
       <p class="ml-10 text-justify text-mono text-lg"> 2. Sea level rises </p>
       <p class="ml-10 text-justify text-mono text-lg"> 3. Earth's temperature rises </p>
       <p class="ml-10 text-justify text-mono text-lg"> 4. Forest fires </p>
-    </p>
-    <div class="text-center tracking-wide">
-      <label for="KonsumsiDayaListrik"
-        >Input number of your Electric consumption:</label
-      >
-      <input
-        id="KonsumsiDayaListrik"
-        type="number"
-        name="DayaListrik"
-        placeholder="in kWh"
-      />
+      </p>
+      <div class="h-56 grid grid-cols-3 gap-4 content-start">
+        <div class="box-border h-32 w-16 p-4 rounded-lg box-content h-32 w-16 bg-lime-700 flex-auto w-64 shadow-2xl">
+          <div class="text-center tracking-wide">
+            <label for="KonsumsiDayaListrik">Input number of your Electric consumption:</label>
+            <input class="bg-blue-200 p-0.25 rounded-md focus:bg-blue-300 focus:outline-none" id="KonsumsiDayaListrik"
+              type="number" name="DayaListrik" placeholder="in kWh" />
+          </div>
+          <div class="text-center tracking-wide" id="total-carbon-electric" style="display: none">
+            Total carbon from electric:
+            <span id="total-carbon-electric-span">0</span> CO2
+          </div>
+        </div>
+        <div class="box-border h-32 w-16 p-4 rounded-lg box-content h-32 w-16 bg-lime-700 flex-auto w-64 shadow-2xl">
+          <div class="text-center tracking-wide">
+            <label for="KonsumsiGasLPG">Input number of your LPG gas usage:</label>
+            <input class="bg-blue-200 p-0.25 rounded-md focus:bg-blue-300 focus:outline-none" id="KonsumsiGasLPG"
+              type="number" name="GasLPG" placeholder="LPG bottle" />
+          </div>
+          <div class="text-center tracking-wide" id="total-carbon-lpg" style="display: none">
+            Total carbon from LPG: <span id="total-carbon-lpg-span">0</span> CO2
+          </div>
+        </div>
+        <div class="box-border h-32 w-16 p-4 rounded-lg box-content h-32 w-16 bg-lime-700 flex-auto w-64 shadow-2xl">
+          <div class="text-center tracking-wide ">
+            <label>Choose type of fuel: </label>
+            <select class="bg-blue-200 p-0.25 rounded-md focus:bg-blue-300 focus:outline-none" id="type">
+              <option value="Gasoline">Gasoline</option>
+              <option value="Kerosene">Kerosene</option>
+              <option value="Diesel">Diesel</option>
+            </select>
+            <div class="text-center tracking-wide" id="total-gasoline" style="display: none">
+              <label for="total-gasoline-input">Total gasoline used:</label>
+              <input class="bg-blue-200 p-0.25 rounded-md focus:bg-blue-300 focus:outline-none" type="number"
+                id="total-gasoline-input" />
+            </div>
+
+            <div class="text-center tracking-wide" id="total-kerosene" style="display: none">
+              <label for="total-kerosene-input">Total kerosene used:</label>
+              <input class="bg-blue-200 p-0.25 rounded-md focus:bg-blue-300 focus:outline-none" type="number"
+                id="total-kerosene-input" />
+            </div>
+
+            <div class="text-center tracking-wide" id="total-diesel" style="display: none">
+              <label for="total-diesel-input">Total diesel used:</label>
+              <input class="bg-blue-200 p-0.25 rounded-md focus:bg-blue-300 focus:outline-none" type="number"
+                id="total-diesel-input" />
+
+            </div>
+            <div class="text-center tracking-wide" id="total-fuel" style="display: none">
+              Total carbon from fuel: <span id="total-fuel-span">0</span> CO2
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="block mx-auto bg-lime-700 hover:bg-green-700 text-black font-bold py-2 px-4 mt-4 rounded"
+        id="total-carbon" style="display: none">
+        Total carbon: <span id="total-carbon-span">0</span> CO2
+      </div>
+      <button onclick="hitungTotalCarbon()"
+        class="block mx-auto bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 mt-4 rounded">Calculate</button>
     </div>
-    <div class="text-center tracking-wide">
-      <label for="KonsumsiGasLPG">Input number of your LPG gas usage:</label>
-      <input id="KonsumsiGasLPG" type="number" name="GasLPG" />
-    </div>
-    <div class="text-center tracking-wide">
-      <select id="type">
-        <option value="">Choose type of fuel</option>
-        <option value="Gasoline">Gasoline</option>
-        <option value="Kerosene">Kerosene</option>
-        <option value="Diesel">Diesel</option>
-      </select>
-    </div>
+  </div>
 
-    <div
-      class="text-center tracking-wide"
-      id="total-gasoline"
-      style="display: none"
-    >
-      <label for="total-gasoline-input">Total gasoline used:</label>
-      <input
-        type="number"
-        id="total-gasoline-input"
-        onkeydown="if(event.keyCode === 13) hitungTotalFuel()"
-      />
-    </div>
+  <script>
+    const selectType = document.getElementById("type");
+    const totalGasolineUse = document.getElementById("total-gasoline");
+    const totalKeroseneUse = document.getElementById("total-kerosene");
+    const totalDieselUse = document.getElementById("total-diesel");
+    const totalFuelElement = document.getElementById("total-fuel");
+    const totalFuelSpanElement = document.getElementById("total-fuel-span");
+    const totalCarbonElectricElement = document.getElementById(
+      "total-carbon-electric"
+    );
+    const totalCarbonElectricSpanElement = document.getElementById(
+      "total-carbon-electric-span"
+    );
+    const totalCarbonLPGElement = document.getElementById("total-carbon-lpg");
+    const totalCarbonLPGSpanElement = document.getElementById(
+      "total-carbon-lpg-span"
+    );
+    const totalCarbonElement = document.getElementById("total-carbon");
+    const totalCarbonSpanElement =
+      document.getElementById("total-carbon-span");
 
-    <div
-      class="text-center tracking-wide"
-      id="total-kerosene"
-      style="display: none"
-    >
-      <label for="total-kerosene-input">Total kerosene used:</label>
-      <input
-        type="number"
-        id="total-kerosene-input"
-        onkeydown="if(event.keyCode === 13) hitungTotalFuel()"
-      />
-    </div>
+    function hitungTotalFuel() {
+      const selectedType = selectType.value;
 
-    <div
-      class="text-center tracking-wide"
-      id="total-diesel"
-      style="display: none"
-    >
-      <label for="total-diesel-input">Total diesel used:</label>
-      <input
-        type="number"
-        id="total-diesel-input"
-        onkeydown="if(event.keyCode === 13) hitungTotalFuel()"
-      />
-    </div>
+      let totalFuel = 0;
 
-    <div
-      class="text-center tracking-wide"
-      id="total-fuel"
-      style="display: none"
-    >
-      Total carbon from fuel: <span id="total-fuel-span">0</span> CO2
-    </div>
-
-    <div
-      class="text-center tracking-wide"
-      id="total-carbon-electric"
-      style="display: none"
-    >
-      Total carbon from electric:
-      <span id="total-carbon-electric-span">0</span> CO2
-    </div>
-
-    <div
-      class="text-center tracking-wide"
-      id="total-carbon-lpg"
-      style="display: none"
-    >
-      Total carbon from LPG: <span id="total-carbon-lpg-span">0</span> CO2
-    </div>
-
-    <div
-      class="text-center tracking-wide"
-      id="total-carbon"
-      style="display: none"
-    >
-      Total carbon: <span id="total-carbon-span">0</span> CO2
-    </div>
-
-    <script>
-      const selectType = document.getElementById("type");
-      const totalGasolineUse = document.getElementById("total-gasoline");
-      const totalKeroseneUse = document.getElementById("total-kerosene");
-      const totalDieselUse = document.getElementById("total-diesel");
-      const totalFuelElement = document.getElementById("total-fuel");
-      const totalFuelSpanElement = document.getElementById("total-fuel-span");
-      const totalCarbonElectricElement = document.getElementById(
-        "total-carbon-electric"
-      );
-      const totalCarbonElectricSpanElement = document.getElementById(
-        "total-carbon-electric-span"
-      );
-      const totalCarbonLPGElement = document.getElementById("total-carbon-lpg");
-      const totalCarbonLPGSpanElement = document.getElementById(
-        "total-carbon-lpg-span"
-      );
-      const totalCarbonElement = document.getElementById("total-carbon");
-      const totalCarbonSpanElement =
-        document.getElementById("total-carbon-span");
-
-      function hitungTotalFuel() {
-        const selectedType = selectType.value;
-
-        let totalFuel = 0;
-
-        if (selectedType === "Gasoline") {
-          const totalGasoline = parseInt(
-            document.getElementById("total-gasoline-input").value
-          );
-          totalFuel = totalGasoline * 69300;
-        } else if (selectedType === "Kerosene") {
-          const totalKerosene = parseInt(
-            document.getElementById("total-kerosene-input").value
-          );
-          totalFuel = totalKerosene * 71900; // You need to define the conversion factor for kerosene
-        } else if (selectedType === "Diesel") {
-          const totalDiesel = parseInt(
-            document.getElementById("total-diesel-input").value
-          );
-          totalFuel = totalDiesel * 74100; // You need to define the conversion factor for diesel
-        }
-
-        totalFuelSpanElement.textContent = totalFuel;
-        totalFuelElement.style.display = "block";
-        calculateTotalCarbon();
+      if (selectedType === "Gasoline") {
+        const totalGasoline = parseInt(
+          document.getElementById("total-gasoline-input").value
+        );
+        totalFuel = totalGasoline * 69300;
+      } else if (selectedType === "Kerosene") {
+        const totalKerosene = parseInt(
+          document.getElementById("total-kerosene-input").value
+        );
+        totalFuel = totalKerosene * 71900; // You need to define the conversion factor for kerosene
+      } else if (selectedType === "Diesel") {
+        const totalDiesel = parseInt(
+          document.getElementById("total-diesel-input").value
+        );
+        totalFuel = totalDiesel * 74100; // You need to define the conversion factor for diesel
       }
 
-      function calculateTotalCarbon() {
-        const electricConsumption = parseInt(
-          document.getElementById("KonsumsiDayaListrik").value
-        );
-        const lpgConsumption = parseInt(
-          document.getElementById("KonsumsiGasLPG").value
-        );
+      totalFuelSpanElement.textContent = totalFuel;
+      totalFuelElement.style.display = "block";
+    }
 
-        const FEElectric = 0.794;
-        const FELPG = 63100;
-        const nCvLPG = 0.0000473;
+    function calculateTotalCarbon() {
+      const electricConsumption = parseInt(
+        document.getElementById("KonsumsiDayaListrik").value
+      );
+      const lpgConsumption = parseInt(
+        document.getElementById("KonsumsiGasLPG").value
+      );
 
-        const totalCarbonElectric = electricConsumption * FEElectric;
-        const totalCarbonLPG = FELPG * lpgConsumption * nCvLPG;
+      const FEElectric = 0.794;
+      const FELPG = 63100;
+      const nCvLPG = 0.0000473;
 
-        totalCarbonElectricSpanElement.textContent = totalCarbonElectric;
-        totalCarbonElectricElement.style.display = "block";
+      const totalCarbonElectric = electricConsumption * FEElectric;
+      const totalCarbonLPG = FELPG * lpgConsumption * nCvLPG;
 
-        totalCarbonLPGSpanElement.textContent = totalCarbonLPG;
-        totalCarbonLPGElement.style.display = "block";
+      totalCarbonElectricSpanElement.textContent = totalCarbonElectric;
+      totalCarbonElectricElement.style.display = "block";
 
-        const totalCarbon =
-          totalCarbonElectric +
-          totalCarbonLPG +
-          parseInt(totalFuelSpanElement.textContent);
-        totalCarbonSpanElement.textContent = totalCarbon;
-        totalCarbonElement.style.display = "block";
+      totalCarbonLPGSpanElement.textContent = totalCarbonLPG;
+      totalCarbonLPGElement.style.display = "block";
+
+      const totalCarbon =
+        totalCarbonElectric +
+        totalCarbonLPG +
+        parseInt(totalFuelSpanElement.textContent);
+      totalCarbonSpanElement.textContent = totalCarbon;
+      totalCarbonElement.style.display = "block";
+    }
+
+    selectType.addEventListener("change", () => {
+      const selectedType = selectType.value;
+
+      if (selectedType === "Gasoline") {
+        totalGasolineUse.style.display = "block";
+        totalKeroseneUse.style.display = "none";
+        totalDieselUse.style.display = "none";
+      } else if (selectedType === "Kerosene") {
+        totalKeroseneUse.style.display = "block";
+        totalGasolineUse.style.display = "none";
+        totalDieselUse.style.display = "none";
+      } else if (selectedType === "Diesel") {
+        totalDieselUse.style.display = "block";
+        totalGasolineUse.style.display = "none";
+        totalKeroseneUse.style.display = "none";
+      } else {
+        totalGasolineUse.style.display = "none";
+        totalKeroseneUse.style.display = "none";
+        totalDieselUse.style.display = "none";
+        totalFuelElement.style.display = "none";
       }
+    });
 
-      selectType.addEventListener("change", () => {
-        const selectedType = selectType.value;
+    function hitungTotalCarbon() {
+      hitungTotalFuel();
+      calculateTotalCarbon();
+    }
+  </script>
+</body>
 
-        if (selectedType === "Gasoline") {
-          totalGasolineUse.style.display = "block";
-          totalKeroseneUse.style.display = "none";
-          totalDieselUse.style.display = "none";
-        } else if (selectedType === "Kerosene") {
-          totalKeroseneUse.style.display = "block";
-          totalGasolineUse.style.display = "none";
-          totalDieselUse.style.display = "none";
-        } else if (selectedType === "Diesel") {
-          totalDieselUse.style.display = "block";
-          totalGasolineUse.style.display = "none";
-          totalKeroseneUse.style.display = "none";
-        } else {
-          totalGasolineUse.style.display = "none";
-          totalKeroseneUse.style.display = "none";
-          totalDieselUse.style.display = "none";
-          totalFuelElement.style.display = "none";
-        }
-      });
-    </script>
-  </body>
 </html>
