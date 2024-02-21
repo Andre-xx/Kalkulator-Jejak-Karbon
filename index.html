@@ -6,81 +6,110 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="bg-lime-600">
-  <div class="grid grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-3 desktop:grid-cols-4">
-    <img src="https://www.dnv.com/Images/Carbon-footprint-1134x300_tcm8-13701.jpg" alt="Carbon Footprint Image"
-      class="w-full h-48 object-cover" />
-    <h1 class="text-slate-900 ml-28 text-2xl text-left font-serif">Kalkulator Jejak Karbon</h1>
-    <div class="ml-20 mr-20 text-justify z-10 text-slate-800">
-      contributors to CO2 emissions. Not just the macro scale the highest
-      contributor, but the micro scale is also. Activity like electricity, gas,
-      and transportation use are examples. So, it is important to calculate our
-      carbon footprint so we can help to control CO2 emissions in the world.
-      Kind of example a CO2 emission cause is global warming. Then global
-      warming causes this disaster:
-      <p class="ml-10 text-justify text-mono text-lg"> 1. The polar ice is melting </p>
-      <p class="ml-10 text-justify text-mono text-lg"> 2. Sea level rises </p>
-      <p class="ml-10 text-justify text-mono text-lg"> 3. Earth's temperature rises </p>
-      <p class="ml-10 text-justify text-mono text-lg"> 4. Forest fires </p>
-      </p>
-      <div class="h-56 grid grid-cols-3 gap-4 content-start">
-        <div class="box-border h-32 w-16 p-4 rounded-lg box-content h-32 w-16 bg-lime-700 flex-auto w-64 shadow-2xl">
-          <div class="text-center tracking-wide">
-            <label for="KonsumsiDayaListrik">Input number of your Electric consumption:</label>
-            <input class="bg-blue-200 p-0.25 rounded-md focus:bg-blue-300 focus:outline-none" id="KonsumsiDayaListrik"
-              type="number" name="DayaListrik" placeholder="in kWh" />
-          </div>
-          <div class="text-center tracking-wide" id="total-carbon-electric" style="display: none">
-            Total carbon from electric:
-            <span id="total-carbon-electric-span">0</span> CO2
-          </div>
+<body>
+  <div class="bg-fixed"
+    style="background-image: url(https://ichef.bbci.co.uk/news/976/cpsprodpb/E901/production/_104494695_gettyimages-184404565.jpg.webp)">
+    <div class="grid grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-3 desktop:grid-cols-4">
+      <img src="https://www.dnv.com/Images/Carbon-footprint-1134x300_tcm8-13701.jpg" alt="Carbon Footprint Image"
+        class="w-full h-48 object-cover" />
+      <h1 class="text-slate-900 ml-28 text-9xl mt-4 text-left font-serif">Kalkulator Jejak Karbon</h1>
+      <div class="mt-4 ml-20 mr-20 text-justify text-4xl text-white">
+        contributors to CO2 emissions. Not just the macro scale the highest
+        contributor, but the micro scale is also. Activity like electricity, gas,
+        and transportation use are examples. So, it is important to calculate our
+        carbon footprint so we can help to control CO2 emissions in the world.
+        Kind of example a CO2 emission cause is global warming. Then global
+        warming causes this disaster:
+      </div>
+      <div class=" block size-full flex space-x-10 space-y-48 py-20 px-4 mt-4 bg-teal-900 hover:bg-teal-950">
+        <img
+          src="https://physicsworld.com/wp-content/uploads/2021/04/glacier-melting-Antarctic-324590741-Shutterstock_Bernhard-Staehli.jpg"
+          alt="Pole Ice Melting" class="w-6/12 h-max" />
+        <p class="text-justify text-mono text-4xl text-white"> The polar ice is melting </p>
+      </div>
+      <div class="block size-full flex py-20 px-4 mt-4 bg-sky-900 hover:bg-sky-950 items-center justify-between">
+        <div class="text-center text-mono text-4xl text-white ml-96">
+          <p>Sea Level Rises</p>
         </div>
-        <div class="box-border h-32 w-16 p-4 rounded-lg box-content h-32 w-16 bg-lime-700 flex-auto w-64 shadow-2xl">
-          <div class="text-center tracking-wide">
-            <label for="KonsumsiGasLPG">Input number of your LPG gas usage:</label>
-            <input class="bg-blue-200 p-0.25 rounded-md focus:bg-blue-300 focus:outline-none" id="KonsumsiGasLPG"
-              type="number" name="GasLPG" placeholder="LPG bottle" />
-          </div>
-          <div class="text-center tracking-wide" id="total-carbon-lpg" style="display: none">
-            Total carbon from LPG: <span id="total-carbon-lpg-span">0</span> CO2
-          </div>
+        <img
+          src="https://i.guim.co.uk/img/media/61ed2ea95bceae724e0cb3770c71f424d8155a2f/0_192_5694_3417/master/5694.jpg?width=620&dpr=1&s=none"
+          alt="Sea Level Rises" class="w-6/12 h-auto ml-auto" />
+      </div>
+      <div class="block size-full bg-blue-900 hover:bg-blue-950 py-20 px-4 mt-4 flex space-x-10 space-y-44 ">
+        <img
+          src="https://cinea.ec.europa.eu/sites/default/files/styles/oe_theme_medium_no_crop/public/2023-08/Forest%20Fires%20Article.jpeg?itok=oEHlAyNi"
+          alt="Sea Level Rise" class="w-6/12 h-max " />
+        <p class="text-justify text-mono text-4xl text-white"> Forest Fires </p>
+      </div>
+      <div class="block size-full flex py-20 px-4 mt-4 bg-indigo-900 hover:bg-indigo-950 items-center justify-between">
+        <div class="text-center text-mono text-4xl text-white ml-72">
+          <p> Earth's Temperature Rises </p>
         </div>
-        <div class="box-border h-32 w-16 p-4 rounded-lg box-content h-32 w-16 bg-lime-700 flex-auto w-64 shadow-2xl">
-          <div class="text-center tracking-wide ">
-            <label>Choose type of fuel: </label>
-            <select class="bg-blue-200 p-0.25 rounded-md focus:bg-blue-300 focus:outline-none" id="type">
-              <option value="Gasoline">Gasoline</option>
-              <option value="Kerosene">Kerosene</option>
-              <option value="Diesel">Diesel</option>
-            </select>
-            <div class="text-center tracking-wide" id="total-gasoline" style="display: none">
-              <label for="total-gasoline-input">Total gasoline used:</label>
-              <input class="bg-blue-200 p-0.25 rounded-md focus:bg-blue-300 focus:outline-none" type="number"
-                id="total-gasoline-input" />
+        <img
+          src="https://www.usatoday.com/gcdn/authoring/authoring-images/2023/12/15/USAT/71936315007-warmestyeartopper-4.jpg?crop=4422,2330,x0,y352&width=1366&height=720&format=pjpg&auto=webp&quality=60"
+          alt="Sea Level Rises" class="w-6/12 h-auto ml-auto" />
+      </div>
+      <div class="py-4 px-4 mt-4 h-44 w-full flex justify-center">
+        <div class="grid grid-cols-3 gap-4 content-start">
+          <div class="block mx-6 bg-lime-700 hover:bg-lime-900 text-black font-bold py-2 px-6 mt-4 rounded">
+            <div class="text-center tracking-wide">
+              <label for="KonsumsiDayaListrik">Input number of your Electric consumption:</label>
+              <input class="bg-blue-200 p-0.25 rounded-md focus:bg-blue-300 focus:outline-none" id="KonsumsiDayaListrik"
+                type="number" name="DayaListrik" placeholder="in kWh" />
             </div>
-
-            <div class="text-center tracking-wide" id="total-kerosene" style="display: none">
-              <label for="total-kerosene-input">Total kerosene used:</label>
-              <input class="bg-blue-200 p-0.25 rounded-md focus:bg-blue-300 focus:outline-none" type="number"
-                id="total-kerosene-input" />
+            <div class="text-center tracking-wide" id="total-carbon-electric" style="display: none">
+              Total carbon from electric:
+              <span id="total-carbon-electric-span">0</span>
             </div>
-
-            <div class="text-center tracking-wide" id="total-diesel" style="display: none">
-              <label for="total-diesel-input">Total diesel used:</label>
-              <input class="bg-blue-200 p-0.25 rounded-md focus:bg-blue-300 focus:outline-none" type="number"
-                id="total-diesel-input" />
-
+          </div>
+          <div class="block mx-6 bg-lime-700 hover:bg-lime-900 text-black font-bold py-2 px-6 mt-4 rounded">
+            <div class="text-center tracking-wide">
+              <label for="KonsumsiGasLPG">Input number of your LPG gas usage:</label>
+              <input class="bg-blue-200 p-0.25 rounded-md focus:bg-blue-300 focus:outline-none" id="KonsumsiGasLPG"
+                type="number" name="GasLPG" placeholder="LPG bottle" />
             </div>
-            <div class="text-center tracking-wide" id="total-fuel" style="display: none">
-              Total carbon from fuel: <span id="total-fuel-span">0</span> CO2
+            <div class="text-center tracking-wide" id="total-carbon-lpg" style="display: none">
+              Total carbon from LPG: <span id="total-carbon-lpg-span">0</span>
+            </div>
+          </div>
+          <div class="block mx-6 bg-lime-700 hover:bg-lime-900 text-black font-bold py-2 px-6 mt-4 rounded">
+            <div class="text-center tracking-wide ">
+              <label>Choose type of fuel: </label>
+              <select class="bg-blue-300 dark:bg-blue-200 p-0.25 rounded-md focus:bg-blue-300 focus:outline-none"
+                id="type">
+                <option value="Gasoline">Gasoline</option>
+                <option value="Kerosene">Kerosene</option>
+                <option value="Diesel">Diesel</option>
+              </select>
+              <div class="text-center tracking-wide" id="total-gasoline" style="display: none">
+                <label for="total-gasoline-input">Total gasoline used:</label>
+                <input class="bg-blue-200 p-0.25 rounded-md focus:bg-blue-300 focus:outline-none" type="number"
+                  id="total-gasoline-input" />
+              </div>
+
+              <div class="text-center tracking-wide" id="total-kerosene" style="display: none">
+                <label for="total-kerosene-input">Total kerosene used:</label>
+                <input class="bg-blue-200 p-0.25 rounded-md focus:bg-blue-300 focus:outline-none" type="number"
+                  id="total-kerosene-input" />
+              </div>
+
+              <div class="text-center tracking-wide" id="total-diesel" style="display: none">
+                <label for="total-diesel-input">Total diesel used:</label>
+                <input class="bg-blue-200 p-0.25 rounded-md focus:bg-blue-300 focus:outline-none" type="number"
+                  id="total-diesel-input" />
+
+              </div>
+              <div class="text-center tracking-wide" id="total-fuel" style="display: none">
+                Total carbon from fuel: <span id="total-fuel-span">0</span> CO2
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="block mx-auto bg-lime-700 hover:bg-green-700 text-black font-bold py-2 px-4 mt-4 rounded"
+      <div class="block mx-auto bg-lime-700 hover:bg-lime-900 text-black font-bold py-2 px-4 mt-4 rounded"
         id="total-carbon" style="display: none">
-        Total carbon: <span id="total-carbon-span">0</span> CO2
+        Total carbon: <span id="total-carbon-span">0</span>
       </div>
       <button onclick="hitungTotalCarbon()"
         class="block mx-auto bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 mt-4 rounded">Calculate</button>
@@ -94,73 +123,77 @@
     const totalDieselUse = document.getElementById("total-diesel");
     const totalFuelElement = document.getElementById("total-fuel");
     const totalFuelSpanElement = document.getElementById("total-fuel-span");
-    const totalCarbonElectricElement = document.getElementById(
-      "total-carbon-electric"
-    );
-    const totalCarbonElectricSpanElement = document.getElementById(
-      "total-carbon-electric-span"
-    );
+    const totalCarbonElectricElement = document.getElementById("total-carbon-electric");
+    const totalCarbonElectricSpanElement = document.getElementById("total-carbon-electric-span");
     const totalCarbonLPGElement = document.getElementById("total-carbon-lpg");
-    const totalCarbonLPGSpanElement = document.getElementById(
-      "total-carbon-lpg-span"
-    );
+    const totalCarbonLPGSpanElement = document.getElementById("total-carbon-lpg-span");
     const totalCarbonElement = document.getElementById("total-carbon");
-    const totalCarbonSpanElement =
-      document.getElementById("total-carbon-span");
+    const totalCarbonSpanElement = document.getElementById("total-carbon-span");
 
     function hitungTotalFuel() {
       const selectedType = selectType.value;
-
       let totalFuel = 0;
 
       if (selectedType === "Gasoline") {
-        const totalGasoline = parseInt(
-          document.getElementById("total-gasoline-input").value
-        );
+        const totalGasoline = parseInt(document.getElementById("total-gasoline-input").value || 0); // Handle empty input with 0
         totalFuel = totalGasoline * 69300;
       } else if (selectedType === "Kerosene") {
-        const totalKerosene = parseInt(
-          document.getElementById("total-kerosene-input").value
-        );
-        totalFuel = totalKerosene * 71900; // You need to define the conversion factor for kerosene
+        const totalKerosene = parseInt(document.getElementById("total-kerosene-input").value || 0); // Handle empty input with 0
+        totalFuel = totalKerosene * 71900; // Define conversion factor here
       } else if (selectedType === "Diesel") {
-        const totalDiesel = parseInt(
-          document.getElementById("total-diesel-input").value
-        );
-        totalFuel = totalDiesel * 74100; // You need to define the conversion factor for diesel
+        const totalDiesel = parseInt(document.getElementById("total-diesel-input").value || 0); // Handle empty input with 0
+        totalFuel = totalDiesel * 74100; // Define conversion factor here
       }
 
       totalFuelSpanElement.textContent = totalFuel;
       totalFuelElement.style.display = "block";
+      return totalFuel;
     }
 
-    function calculateTotalCarbon() {
-      const electricConsumption = parseInt(
-        document.getElementById("KonsumsiDayaListrik").value
-      );
-      const lpgConsumption = parseInt(
-        document.getElementById("KonsumsiGasLPG").value
-      );
+    function calculateElectricLPGCarbon() {
+      const electricConsumption = parseInt(document.getElementById("KonsumsiDayaListrik").value || 0); // Handle empty input with 0
+      const lpgConsumption = parseInt(document.getElementById("KonsumsiGasLPG").value || 0); // Handle empty input with 0
 
       const FEElectric = 0.794;
-      const FELPG = 63100;
-      const nCvLPG = 0.0000473;
-
       const totalCarbonElectric = electricConsumption * FEElectric;
-      const totalCarbonLPG = FELPG * lpgConsumption * nCvLPG;
-
-      totalCarbonElectricSpanElement.textContent = totalCarbonElectric;
+      totalCarbonElectricSpanElement.textContent = `${totalCarbonElectric} CO2`; // Always display CO2 with value
       totalCarbonElectricElement.style.display = "block";
 
-      totalCarbonLPGSpanElement.textContent = totalCarbonLPG;
+      const FELPG = 63100;
+      const nCvLPG = 0.0000473;
+      const totalCarbonLPG = FELPG * lpgConsumption * nCvLPG;
+      totalCarbonLPGSpanElement.textContent = `${totalCarbonLPG} CO2`; // Always display CO2 with value
       totalCarbonLPGElement.style.display = "block";
 
-      const totalCarbon =
-        totalCarbonElectric +
-        totalCarbonLPG +
-        parseInt(totalFuelSpanElement.textContent);
-      totalCarbonSpanElement.textContent = totalCarbon;
+      return totalCarbonElectric + totalCarbonLPG;
+    }
+
+    function displayTotalCarbon(totalCarbon) {
+      totalCarbonSpanElement.textContent = `${totalCarbon} CO2`;
       totalCarbonElement.style.display = "block";
+    }
+
+    let carbonSpanElement;
+
+    selectType.addEventListener("change", () => {
+      const selectedType = selectType.value;
+
+      if (selectedType === "Gasoline") {
+        carbonSpanElement = document.getElementById("total-gasoline-span");
+      } else if (selectedType === "Kerosene") {
+        carbonSpanElement = document.getElementById("total-kerosene-span");
+      } else if (selectedType === "Diesel") {
+        carbonSpanElement = document.getElementById("total-diesel-span");
+      } else {
+        carbonSpanElement = null; // Indicate no active carbon span
+      }
+    });
+
+    function hitungTotalCarbon() {
+      const totalFuel = hitungTotalFuel();
+      const totalCarbonFromEandL = calculateElectricLPGCarbon();
+      const totalCarbon = totalFuel + totalCarbonFromEandL;
+      displayTotalCarbon(totalCarbon);
     }
 
     selectType.addEventListener("change", () => {
@@ -186,10 +219,6 @@
       }
     });
 
-    function hitungTotalCarbon() {
-      hitungTotalFuel();
-      calculateTotalCarbon();
-    }
   </script>
 </body>
 
