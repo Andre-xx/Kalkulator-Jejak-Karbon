@@ -51,7 +51,8 @@
       </div>
       <div class="py-4 px-4 mt-4 h-44 w-full flex justify-center">
         <div class="grid grid-cols-3 gap-4 content-start">
-          <div class="block mx-6 bg-lime-700 hover:bg-lime-900 text-black font-bold py-2 px-6 mt-4 rounded">
+          <div
+            class="block mx-6 bg-lime-700 hover:bg-lime-900 hover:-translate-y-1 hover:scale-110 duration-300 transition ease-in-out delay-150 text-black font-bold py-2 px-6 mt-4 rounded">
             <div class="text-center tracking-wide">
               <label for="KonsumsiDayaListrik">Input number of your Electric consumption:</label>
               <input class="bg-blue-200 p-0.25 rounded-md focus:bg-blue-300 focus:outline-none" id="KonsumsiDayaListrik"
@@ -62,7 +63,8 @@
               <span id="total-carbon-electric-span">0</span>
             </div>
           </div>
-          <div class="block mx-6 bg-lime-700 hover:bg-lime-900 text-black font-bold py-2 px-6 mt-4 rounded">
+          <div
+            class="block mx-6 bg-lime-700 hover:bg-lime-900 hover:-translate-y-1 hover:scale-110 duration-300 transition ease-in-out delay-150 text-black font-bold py-2 px-6 mt-4 rounded">
             <div class="text-center tracking-wide">
               <label for="KonsumsiGasLPG">Input number of your LPG gas usage:</label>
               <input class="bg-blue-200 p-0.25 rounded-md focus:bg-blue-300 focus:outline-none" id="KonsumsiGasLPG"
@@ -72,7 +74,8 @@
               Total carbon from LPG: <span id="total-carbon-lpg-span">0</span>
             </div>
           </div>
-          <div class="block mx-6 bg-lime-700 hover:bg-lime-900 text-black font-bold py-2 px-6 mt-4 rounded">
+          <div
+            class="block mx-6 bg-lime-700 hover:bg-lime-900 hover:-translate-y-1 hover:scale-110 duration-300 transition ease-in-out delay-150 text-black font-bold py-2 px-6 mt-4 rounded">
             <div class="text-center tracking-wide ">
               <label>Choose type of fuel: </label>
               <select class="bg-blue-300 dark:bg-blue-200 p-0.25 rounded-md focus:bg-blue-300 focus:outline-none"
@@ -107,12 +110,13 @@
         </div>
       </div>
 
-      <div class="block mx-auto bg-lime-700 hover:bg-lime-900 text-black font-bold py-2 px-4 mt-4 rounded"
+      <div
+        class="block mx-auto bg-lime-700 hover:bg-lime-900 hover:-translate-y-1 hover:scale-110 duration-300 transition ease-in-out delay-150 text-black font-bold py-2 px-4 mt-4 rounded"
         id="total-carbon" style="display: none">
         Total carbon: <span id="total-carbon-span">0</span>
       </div>
       <button onclick="hitungTotalCarbon()"
-        class="block mx-auto bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 mt-4 rounded">Calculate</button>
+        class="block mx-auto bg-green-500 hover:-translate-y-1 hover:scale-110 hover:bg-green-700 duration-300 transition ease-in-out delay-150 text-white font-bold py-2 px-4 mt-4 rounded">Calculate</button>
     </div>
   </div>
 
